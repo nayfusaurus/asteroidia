@@ -1,0 +1,38 @@
+name: Python Pygame Build
+
+on:
+  push:
+    branches: [ "main" ]
+  
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.3'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      - name: Build with PyInstaller
+        run: |
+          pyinstaller --noconsole --onefile --windowed --name "AsteroidsGame" main.py
+
+      # 5. Uploads the compiled executable as a build artifact
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-asteroids-game-app # The name of the artifact to be uploaded
+          path: dist/ # The path to the file(s) to upload. PyInstaller puts the exe in the 'dist' folder.
