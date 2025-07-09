@@ -31,7 +31,7 @@ jobs:
 
       - name: Build executable
         run: |
-          if [ "$RUNNER_OS" == "Windows" ]; then
+          if [ "$RUNNER_OS" == "Windows" ] then
             pyinstaller --noconsole --onefile --windowed --name "AsteroidsGame.exe" main.py
           else
             pyinstaller --noconsole --onefile --windowed --name "AsteroidsGame" main.py
