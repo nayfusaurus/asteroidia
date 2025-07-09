@@ -31,10 +31,15 @@ jobs:
 
       - name: Build executable
         run: |
-          if [ "$RUNNER_OS" == "Windows" ] then
+          if [ "$RUNNER_OS" == "Windows" ]; then
+            echo "current OS is $RUNNER_OS"
             pyinstaller --noconsole --onefile --windowed --name "AsteroidsGame.exe" main.py
+          elif [ "$RUNNER_OS" == "Linux" ]; then
+            echo "current OS is $RUNNER_OS"
+            pyinstaller --noconsole --onefile --windowed --name "AsteroidsGameUbuntu" main.py
           else
-            pyinstaller --noconsole --onefile --windowed --name "AsteroidsGame" main.py
+            echo "current OS is $RUNNER_OS"
+            pyinstaller --noconsole --onefile --windowed --name "AsteroidsGameMac" main.py
           fi
 
       # 5. Uploads the compiled executable as a build artifact
