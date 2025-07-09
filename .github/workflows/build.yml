@@ -28,7 +28,7 @@ jobs:
 
       - name: Build with PyInstaller
         run: |
-          pyinstaller --noconsole --onefile --windowed --name "AsteroidsGame" main.py
+          pyinstaller --noconsole --onefile --windowed --name "AsteroidsGame.exe" main.py
 
       # 5. Uploads the compiled executable as a build artifact
       - name: Upload artifact
