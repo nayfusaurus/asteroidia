@@ -9,7 +9,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{matrix.os}}
 
     steps:
       - name: Checkout repository
@@ -26,13 +29,17 @@ jobs:
           pip install -r requirements.txt
           pip install -r requirements-dev.txt
 
-      - name: Build with PyInstaller
+      - name: Build executable
         run: |
-          pyinstaller --noconsole --onefile --windowed --name "AsteroidsGame.exe" main.py
+          if [ "$RUNNER_OS" == "Windows" ]; then
+            pyinstaller --noconsole --onefile --windowed --name "AsteroidsGame.exe" main.py
+          else
+            pyinstaller --noconsole --onefile --windowed --name "AsteroidsGame" main.py
+          fi
 
       # 5. Uploads the compiled executable as a build artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: my-asteroids-game-app # The name of the artifact to be uploaded
+          name: AsteroidsGame-${{ matrix.os }} # The name of the artifact to be uploaded
           path: dist/ # The path to the file(s) to upload. PyInstaller puts the exe in the 'dist' folder.
