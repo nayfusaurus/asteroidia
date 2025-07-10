@@ -2,25 +2,34 @@ import pygame
 import sys
 import os
 
+# --- Initialze fonts and audio ---
+pygame.font.init()
+pygame.mixer.init()
+
 # --- Constants ---
-# It's good practice to keep constants for colors, etc., in the module
-# where they are most relevant, or in a dedicated config file.
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GRAY = (100, 100, 100)
 LIGHT_GRAY = (170, 170, 170)
+
 # Define paths
-ASSETS_PATH = os.path.join(os.path.dirname(__file__), '..\\assets')
-FONTS_PATH = os.path.join(ASSETS_PATH, 'fonts')
-SOUNDS_PATH = os.path.join(ASSETS_PATH, 'sounds')
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and when bundled """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS # type: ignore
+    except Exception:
+        base_path = os.path.abspath(".")
 
-pygame.font.init()
+    return os.path.join(base_path, relative_path)
 
-#Load fonts
+FONTS_PATH =  resource_path("assets/fonts/")
+SOUNDS_PATH =  resource_path("assets/sounds/")
+
+# --- Fonts ---
 title_font = pygame.font.Font(os.path.join(FONTS_PATH, 'Dashhorizon.otf'), 74)
 button_font = pygame.font.Font(os.path.join(FONTS_PATH, 'Dashhorizon.otf'), 50)
 
-pygame.mixer.init()
 # --- Audio ---
 # Global volume setting (0.0 to 1.0)
 current_volume = 0.3

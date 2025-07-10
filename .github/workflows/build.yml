@@ -31,15 +31,15 @@ jobs:
 
       - name: Build for Windows
         if: runner.os == 'Windows'
-        run: pyinstaller --noconsole --onefile --windowed --name "AsteroidsGame.exe" main.py
+        run: pyinstaller --noconsole --onefile --windowed --add-data "assets\fonts\*;assets\fonts" --add-data "assets\sounds\*;assets\sounds" --name "AsteroidsGame.exe" main.py
 
       - name: Build for Linux
         if: runner.os == 'Linux'
-        run: pyinstaller --noconsole --onefile --windowed --name "AsteroidsGameUbuntu" main.py
+        run: pyinstaller --noconsole --onefile --windowed --add-data "assets/fonts/*:assets/fonts" --add-data "assets/sounds/*:assets/sounds" --name "AsteroidsGameUbuntu" main.py
 
       - name: Build for macOS
         if: runner.os == 'macOS'
-        run: pyinstaller --noconsole --onefile --windowed --name "AsteroidsGameMac" main.py
+        run: pyinstaller --noconsole --onefile --windowed --add-data "assets/fonts/*:assets/fonts" --add-data "assets/sounds/*:assets/sounds" --name "AsteroidsGameMac" main.py
 
       # 5. Uploads the compiled executable as a build artifact
       - name: Upload artifact
