@@ -1,34 +1,18 @@
 import pygame
 import sys
 import os
+from scenes.menu_utils import draw_text
+from config.colors import BLACK, WHITE, GRAY, LIGHT_GRAY
+from config.fonts import MENU_FONT
+from config.sounds import BACKGROUND_SOUND
 
 # --- Initialze fonts and audio ---
 pygame.font.init()
 pygame.mixer.init()
 
-# --- Constants ---
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-GRAY = (100, 100, 100)
-LIGHT_GRAY = (170, 170, 170)
-
-# Define paths
-def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and when bundled """
-    try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
-        base_path = sys._MEIPASS # type: ignore
-    except Exception:
-        base_path = os.path.abspath(".")
-
-    return os.path.join(base_path, relative_path)
-
-FONTS_PATH =  resource_path("assets/fonts/")
-SOUNDS_PATH =  resource_path("assets/sounds/")
-
 # --- Fonts ---
-title_font = pygame.font.Font(os.path.join(FONTS_PATH, 'Dashhorizon.otf'), 74)
-button_font = pygame.font.Font(os.path.join(FONTS_PATH, 'Dashhorizon.otf'), 50)
+title_font = pygame.font.Font(MENU_FONT, 74)
+button_font = pygame.font.Font(MENU_FONT, 50)
 
 # --- Audio ---
 # Global volume setting (0.0 to 1.0)
@@ -37,24 +21,10 @@ pygame.mixer.music.set_volume(current_volume)
 
 # It's good practice to handle potential errors, like a missing music file
 try:
-    pygame.mixer.music.load(SOUNDS_PATH+'\\723909_background.wav')
+    pygame.mixer.music.load(BACKGROUND_SOUND)
     pygame.mixer.music.play(-1)  # -1 makes the music loop indefinitely
 except pygame.error:
-    print("Warning: '723909_background.wav' not found. Music will not play.")
-
-# --- Helper Function to Draw Text ---
-def draw_text(text, font, color, surface, x, y, center=False):
-    """
-    A helper function to easily draw text on the screen.
-    """
-    text_obj = font.render(text, True, color)
-    text_rect = text_obj.get_rect()
-    if center:
-        text_rect.center = (x, y)
-    else:
-        text_rect.topleft = (x, y)
-    surface.blit(text_obj, text_rect)
-    return text_rect
+    print("Warning: 'BACKGROUND_SOUND file' not found. Music will not play.")
 
 # --- Main Menu Function ---
 def main_menu(screen):
@@ -72,7 +42,7 @@ def main_menu(screen):
         screen.fill(BLACK)
 
         # Draw Title
-        draw_text('Main Menu', title_font, WHITE, screen, screen.get_width() / 2, 100, center=True)
+        draw_text('ASTEROIDS', title_font, WHITE, screen, screen.get_width() / 2, 100, center=True)
 
         # Create and draw buttons
         button_width, button_height = 250, 60
