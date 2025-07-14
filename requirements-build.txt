@@ -1,1 +1,2 @@
 pyinstaller==6.14.1
+bandit==1.8.6

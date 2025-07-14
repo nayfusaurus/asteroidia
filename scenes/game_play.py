@@ -17,6 +17,7 @@ def game_loop(screen):
     dt = 0
     clock = pygame.time.Clock()
 
+    # Adds updatable objects into groups
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
@@ -54,9 +55,8 @@ def game_loop(screen):
                     print("Asteroid destroyed!")
                     thing.split()
                     shot.kill()
-                
+
+        # Update the display  
         pygame.display.flip()
-        # pygame.display.update()
         clock.tick(60)
         dt = clock.get_time() / 1000
-

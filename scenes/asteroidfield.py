@@ -42,10 +42,10 @@ class AsteroidField(pygame.sprite.Sprite):
             self.spawn_timer = 0
 
             # spawn a new asteroid at a random edge
-            edge = random.choice(self.edges)
-            speed = random.randint(40, 100)
+            edge = random.choice(self.edges) # nosec
+            speed = random.randint(40, 100) # nosec
             velocity = edge[0] * speed
-            velocity = velocity.rotate(random.randint(-30, 30))
-            position = edge[1](random.uniform(0, 1))
-            kind = random.randint(1, ASTEROID_KINDS)
+            velocity = velocity.rotate(random.randint(-30, 30)) # nosec
+            position = edge[1](random.uniform(0, 1)) # nosec
+            kind = random.randint(1, ASTEROID_KINDS) # nosec
             self.spawn(ASTEROID_MIN_RADIUS * kind, position, velocity)

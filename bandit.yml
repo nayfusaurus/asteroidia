@@ -1,0 +1,2 @@
+# FILE: bandit.yml
+exclude_dirs: ['.github', '.vscode', 'assets', 'build', 'dist', 'venv']
