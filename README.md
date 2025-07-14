@@ -5,6 +5,7 @@
 A super simplistic version of Asteroids I made while learing game development with Python and Pygame. I also used this project to learn how to automate building an executable using GitHub Actions, and to integrate security checks using Bandit during both local development and CI pipelines. 
 
 🎯 This project was built as part of my learning journey through this course:
+
 👉 [Boot.dev Build Asteroids with Python and Pygame](https://www.boot.dev/courses/build-asteroids-python)
  
 # 🕹️ Controls 
@@ -94,7 +95,7 @@ If you find bugs, have feature requests, or want to suggest improvements, please
 Contributions are welcome! 
  
  
-🎓 What I Learned 
+# 🎓 What I Learned 
 
 - Basics of game loops, sprites, and collision detection in Pygame.
 - How to package a Python script into a standalone executable.
