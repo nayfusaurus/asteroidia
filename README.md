@@ -1,5 +1,12 @@
 ![Asteroidia](assets/marketing/asteroidia-banner.jpg)
 
+<p align="center">
+<img alt="GitHub License" src="https://img.shields.io/github/license/nayfusaurus/asteroidia">
+<img alt="GitHub Release" src="https://img.shields.io/github/v/release/nayfusaurus/asteroidia">
+<img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/nayfusaurus/asteroidia/build.yml">
+</p>
+
+
 # 🚀 Asteroidia – A Simple Pygame Game 
 
 A super simplistic version of Asteroids I made while learing game development with Python and Pygame. I also used this project to learn how to automate building an executable using GitHub Actions, and to integrate security checks using Bandit during both local development and CI pipelines. 
