@@ -1,4 +1,4 @@
-![Asteroidia](assets/marketing/asteroidia-banner.jpg)
+![Asteroidia](assets/marketing/asteroidia-banner.png)
 
 <p align="center">
 <img alt="GitHub License" src="https://img.shields.io/github/license/nayfusaurus/asteroidia">
