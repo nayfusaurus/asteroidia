@@ -32,8 +32,8 @@ To run and develop this game locally, follow these steps:
 1. Clone the Repository 
 
 ```
-git clone https://github.com/nayfusaurus/asteroids.git
-cd asteroids
+git clone https://github.com/nayfusaurus/asteroidia.git
+cd asteroidia
 ``` 
  
 2. Create and Activate a Virtual Environment 
